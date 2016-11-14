@@ -28,7 +28,7 @@ public class SinglishCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         // Find fields to populate in inflated template
-        TextView word = (TextView) view.findViewById(R.id.word);
+        TextView word = (TextView) view.findViewById(R.id.singleword);
         // Extract properties from cursor
         String body = cursor.getString(cursor.getColumnIndexOrThrow("word"));
         // Populate fields with extracted properties

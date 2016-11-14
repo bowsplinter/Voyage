@@ -15,7 +15,7 @@ import java.sql.SQLException;
 class SinglishDatabaseHelper extends SQLiteOpenHelper {
     // DATABASE
     private static final String DATABASE_NAME = "singlishDatabase";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 1;
 
     // TABLE
     private static final String TABLE_SINGLISH = "singlish";

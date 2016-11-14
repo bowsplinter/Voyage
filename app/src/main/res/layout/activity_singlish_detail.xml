@@ -9,4 +9,76 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="istd.team4.travelapp.SinglishDetailActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20pt"
+        android:text="ACBC"
+        android:id="@+id/word"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true" />
+    <TextView
+        android:paddingTop="16pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Origin:"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        android:id="@+id/originlabel"
+        android:layout_below="@+id/word"
+        android:visibility="invisible"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:paddingTop="2pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="English and Hokkien"
+        android:textSize="8pt"
+        android:id="@+id/origin"
+        android:layout_below="@+id/originlabel"
+        android:visibility="invisible"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:paddingTop="16pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meaning:"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        android:id="@+id/deflabel"
+        android:layout_below="@+id/origin"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:paddingTop="2pt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acronym for 'Act Cute Buay Cute.' Phrase which describes somebody attempting to behave in an exaggeratedly cute or adorable fashion. However, they come across more annoying than cute."
+        android:textSize="8pt"
+        android:id="@+id/def"
+        android:layout_below="@+id/deflabel"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:paddingTop="16pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usage:"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        android:id="@+id/examplelabel"
+        android:layout_below="@+id/def"
+        android:visibility="invisible"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:paddingTop="2pt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="example"
+        android:textSize="8pt"
+        android:id="@+id/example"
+        android:layout_below="@+id/examplelabel"
+        android:visibility="invisible"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
