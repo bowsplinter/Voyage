@@ -1,7 +1,9 @@
 package istd.team4.travelapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -50,18 +52,26 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         // load data into sqllite3
-//        InputStream inputStream = getResources().openRawResource(R.raw.singlish);
-//        BufferedReader read = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-16")));
-//        String line;
-//        try {
-//            while ((line = read.readLine()) != null) {
-//                String[] cells = line.split("!@#\\$%", -1);
-//                SinglishDatabaseHelper databaseHelper = SinglishDatabaseHelper.getInstance(this);
-//                databaseHelper.addSinglish(cells[0],cells[1],cells[2],cells[3]);
-//            }
-//        } catch (IOException e) {
-//            System.out.println(e);
-//        }
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        int stored = settings.getInt("stored",0);
+        Log.v("stored", "" + stored);
+        if (stored == 0) {
+            InputStream inputStream = getResources().openRawResource(R.raw.singlish);
+            BufferedReader read = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-16")));
+            String line;
+            try {
+                while ((line = read.readLine()) != null) {
+                    String[] cells = line.split("!@#\\$%", -1);
+                    SinglishDatabaseHelper databaseHelper = SinglishDatabaseHelper.getInstance(this);
+                    databaseHelper.addSinglish(cells[0], cells[1], cells[2], cells[3]);
+                }
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("stored", 1);
+            editor.apply();
+        }
     }
 
     private void setupViewPager(ViewPager viewPager) {
