@@ -87,6 +87,17 @@ class SinglishDatabaseHelper extends SQLiteOpenHelper {
             db.endTransaction();
         }
     }
+    public Cursor fetchByID(long id) throws SQLException {
+        Cursor cursor = null;
+        SQLiteDatabase db = getWritableDatabase();
+//        cursor = db.query(true, TABLE_SINGLISH, new String[] {KEY_SINGLISH_ID,
+//                            KEY_SINGLISH_WORD, KEY_SINGLISH_ORIGIN, KEY_SINGLISH_DEFINATION, KEY_SINGLISH_EXAMPLE},
+//                KEY_SINGLISH_ID + " like '%" + id + "%'",
+//                null, null, null, null, null, null);
+        String query = String.format("SELECT * FROM %s WHERE %s = ?",TABLE_SINGLISH, KEY_SINGLISH_ID);
+        cursor = db.rawQuery(query, new String[]{String.valueOf(id)});
+        return cursor;
+    }
 
     public Cursor fetchByWord(String inputText) throws SQLException {
         Log.w("input", inputText);

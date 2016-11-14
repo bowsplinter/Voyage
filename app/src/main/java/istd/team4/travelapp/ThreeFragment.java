@@ -1,5 +1,6 @@
 package istd.team4.travelapp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -20,6 +21,9 @@ import java.sql.SQLException;
  * A simple {@link Fragment} subclass.
  */
 public class ThreeFragment extends Fragment {
+
+    ListView wordList;
+
     private SinglishDatabaseHelper databaseHelper;
 
     public ThreeFragment() {
@@ -42,6 +46,7 @@ public class ThreeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         final SearchView search = (SearchView)view.findViewById(R.id.search);
+        showResults("");
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -89,25 +94,20 @@ public class ThreeFragment extends Fragment {
             Log.e("SQL", "" + e);
         }
 //        Cursor cursor1 = databaseHelper.fetchByWord(query);
-        ListView wordList = (ListView)getView().findViewById(R.id.words);
+        wordList = (ListView)getView().findViewById(R.id.words);
         SinglishCursorAdapter singAdapter = new SinglishCursorAdapter(getActivity(),cursor);
         wordList.setAdapter(singAdapter);
-
-//        try {
-//            cursor = databaseHelper.fetchByWord(query != null ? query.toString() : "*");
-//        } catch (SQLException e) {
-//            Log.e("SQL", "" + e);
-//        }
-//
-//        if (cursor == null) {
-//            //
-//        } else {
-//            ListView wordList = (ListView)getView().findViewById(R.id.words);
-//            SinglishCursorAdapter singAdapter = new SinglishCursorAdapter(getActivity(), cursor);
-//            wordList.setAdapter(singAdapter);
-//        }
+        setupListener(); // here or on created view
     }
 
-
-
+    public void setupListener() {
+        wordList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ((MainActivity)getActivity()).changeSinglishDetail(id);
+                Log.v("listener", "pos" + position);
+                Log.v("listener", "id" + id);
+            }
+        });
+    }
 }

@@ -1,5 +1,6 @@
 package istd.team4.travelapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -47,18 +50,18 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         // load data into sqllite3
-        InputStream inputStream = getResources().openRawResource(R.raw.singlish);
-        BufferedReader read = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-16")));
-        String line;
-        try {
-            while ((line = read.readLine()) != null) {
-                String[] cells = line.split("!@#\\$%", -1);
-                SinglishDatabaseHelper databaseHelper = SinglishDatabaseHelper.getInstance(this);
-                databaseHelper.addSinglish(cells[0],cells[1],cells[2],cells[3]);
-            }
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+//        InputStream inputStream = getResources().openRawResource(R.raw.singlish);
+//        BufferedReader read = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-16")));
+//        String line;
+//        try {
+//            while ((line = read.readLine()) != null) {
+//                String[] cells = line.split("!@#\\$%", -1);
+//                SinglishDatabaseHelper databaseHelper = SinglishDatabaseHelper.getInstance(this);
+//                databaseHelper.addSinglish(cells[0],cells[1],cells[2],cells[3]);
+//            }
+//        } catch (IOException e) {
+//            System.out.println(e);
+//        }
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -97,4 +100,20 @@ public class MainActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
+    public void changeSinglishDetail(long id){
+        Intent intent = new Intent(this, SinglishDetailActivity.class);
+        Log.v("change", "id " + id);
+        intent.putExtra("singlish", id);
+        startActivity(intent);
+    }
+
+//    public void setupListener(ListView wordList) {
+//        wordList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                changeSinglishDetail(id);
+//            }
+//        });
+//    }
 }
