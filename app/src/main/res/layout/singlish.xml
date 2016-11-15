@@ -4,9 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="horizontal" >
     <TextView
+        android:paddingTop="1pt"
+        android:paddingBottom="1pt"
         android:id="@+id/singleword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Singlish"
+        android:textSize="12pt"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 </LinearLayout>

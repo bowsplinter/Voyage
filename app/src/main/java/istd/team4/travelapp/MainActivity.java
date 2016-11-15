@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,15 +26,19 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import istd.team4.travelapp.OneFragment;
-import istd.team4.travelapp.TwoFragment;
-import istd.team4.travelapp.ThreeFragment;
-
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
+//    public ArrayList getBestRoute(View v) {
+//        return ItineraryPlanner.getBestRoute(v);
+//    }
+//
+//    public ArrayList getApprox(View v) {
+//        return ItineraryPlanner.getApprox(v);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "ONE");
+        adapter.addFragment(new ItineraryPlanner(), "ONE");
         adapter.addFragment(new TwoFragment(), "TWO");
         adapter.addFragment(new ThreeFragment(), "THREE");
         viewPager.setAdapter(adapter);
