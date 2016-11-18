@@ -4,12 +4,31 @@
     android:layout_height="match_parent"
     tools:context="istd.team4.travelapp.TwoFragment">
 
-    <TextView
+
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fragment 2"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:inputType="text"
+        android:hint="location"
+        android:ems="10"
+        android:id="@+id/locationtext"/>
+
+    <Button
+        android:text="Get Location!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/locationtext"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/getlocation"/>
+
+    <Button
+        android:text="Clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/getlocation"
+        android:layout_alignParentStart="true"
+        android:id="@+id/clear" />
 
 </RelativeLayout>
+
