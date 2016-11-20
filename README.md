@@ -35,6 +35,9 @@ There are two algorithms to find the best route, both in Route.java: getBestRout
 
 getBestRoute has a time complexity of Θ(n!n!) since both attractions and transport methods must be permutated, while getApproxBestRoute has a time complexity of Θ(n) since a constant number of operations is performed for each attraction.
 
+### Tourist Attraction Locator
+A smart locator feature whic is robust to most typos from user. Utilises java regex which processes each unit of pronunciation of the input and outputs the most probable tourist location in the database.
+
 
 ### Singlish Dictionary
 Singlish is a unique language which takes elements from various Chinese dialects, Malay and Tamil to create a language that is used by Singaporeans. This is often a great challenge for tourists in Singapore and this attempts to bridge that gap. 
