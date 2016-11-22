@@ -36,12 +36,31 @@ There are two algorithms to find the best route, both in Route.java: getBestRout
 getBestRoute has a time complexity of Θ(n!n!) since both attractions and transport methods must be permutated, while getApproxBestRoute has a time complexity of Θ(n) since a constant number of operations is performed for each attraction.
 
 ### Tourist Attraction Locator
-A smart locator feature whic is robust to most typos from user. Utilises java regex which processes each unit of pronunciation of the input and outputs the most probable tourist location in the database.
+
+This feature allows user to input a tourist attraction and returns the location on google maps. 
+
+Methods:
+
+1. openMap()
+> This method is called whenever the "Get Location" button is pressed. It makes a reference to the input in the edit text box, converts it to lower cases and corrects typoes using the corrector method. Thereafter, an intent to Google maps is created and the corrected String would be passed into it.
+
+2. clear()
+> Clears the edit text box.
+
+3. corrector()
+> Utilises regex to correct typos. The regex requires the starting two letters of every key word to be correct and provides a buffer region for errors i.e \\w{a,b} where a is 1. -1 the remaining letters in that word and b is +2 that number. Eg user can key in "barraaage" and still get an output of "Marina Barrage".
 
 
 ### Singlish Dictionary
 Singlish is a unique language which takes elements from various Chinese dialects, Malay and Tamil to create a language that is used by Singaporeans. This is often a great challenge for tourists in Singapore and this attempts to bridge that gap. 
 
-A [web-scraper](https://github.com/bowsplinter/chisel) is used to get data from https://en.wikipedia.org/wiki/Singlish_vocabulary
+A [web-scraper](https://github.com/bowsplinter/chisel) is used to get data from https://en.wikipedia.org/wiki/Singlish_vocabulary A HTTP request is made to the wikipedia and the DOM elements analyzed. Since the source has different types of tables with different layouts, the table header for each table is analyzed to understand what sort of data the table contains. The data is then sorted accordingly and passed to the android app through a txt file.
 
-This data is populated into the app's SQLite database and allows for quick searching via text or voice search
+This data is populated into the app's SQLite database and which allows for powerful query. This is only done the first time the user opens the app. Subsequent times, a check is made to see if any data has change and updates accordingly.
+
+The dictionary page contains two parts. 
+
+1. A list page with a search bar and all the words in the dictionary.
+
+2. A details page for each word which shows the specific data for the word.
+> Since each word has a different combination of information (word, origin, meaning, usage) from the source, only the relevant header and data is shown based on which information the word contains.
